@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Game {
 
+	static final int sicssor = 0;
+	static final int rock = 1;
+	static final int paper = 2;
+	
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
 		System.out.println("가위: 0, 바위: 1, 보: 2");

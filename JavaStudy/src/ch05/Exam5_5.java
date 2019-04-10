@@ -7,22 +7,25 @@ package ch05;
 			 {95, 86},
 			 {83, 92, 96},
 			 {78, 83, 93, 87, 88}
-		 };
-		
-		 int sum = 0;
-		 double avg = 0.0;
-		 int count = 0;
-		 
-		 for (int i = 1; i < arr.length; i++) {
+			 };
+
+			 int sum = 0;
+			 double avg = 0.0;
+			 int count = 0;
 			 
-			 for (int j = 1; j < arr[i].length; j++) {
-				 sum += arr[i][j];
-				 count++;
-		 }
-	 }		
-		 avg = sum / (double)count;
-		 					// 881/ 88.1
-		 System.out.println("Че : " + sum);
-		 System.out.println("ЦђБе : " + avg);
-		 }
-	}
+			 for (int i = 0; i < arr.length; i++) {
+				 
+				 for (int j = 0; j < arr[i].length; j++) {
+					 count++;
+					 
+					 sum += arr[i][j];
+				 }
+			 }
+			 avg = sum / (double)count;
+
+			 System.out.println("Че : " + sum);
+			 System.out.println("ЦђБе : " + avg);
+			 }
+
+}
+		// 881/ 88.1
