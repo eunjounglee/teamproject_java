@@ -3,31 +3,34 @@
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="db.DBManager"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%
+	String id = request.getParameter("id");
+	String pw = request.getParameter("pw");
+	
 	try {
 		DBManager db = DBManager.getInstance();
-		Connection con = db.open(); 
-		
-		// 4. query 실행 준비
-		String sql = "select id, name from test";
+		Connection con = db.open();
+		String sql = "select id from member where id=? and pw=?";
 		PreparedStatement stmt = con.prepareStatement(sql);
-		// 5. query 실행
+		stmt.setString(1, id);
+		stmt.setString(2, pw);
 		ResultSet rs = stmt.executeQuery();
-		
-		while(rs.next()) {
-			int id2 = rs.getInt("id");
-			String name = rs.getString("name");
-			out.println(id2 + " " + name);
+		boolean isOk = false;
+		if(rs.next()) {
+			isOk = true;
 		}
-		
+		if(isOk) {
+			out.println("로그인되었습니다.");
+			session.setAttribute("id", id);
+		} else {
+			out.println("다시 로그인해주세요.");
+		}
 	} catch (ClassNotFoundException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
-	} 
-	catch (SQLException e) {
-		// TODO Auto-generated catch block
+	} catch (SQLException e) {
 		e.printStackTrace();
-	}
+	}	
 %>

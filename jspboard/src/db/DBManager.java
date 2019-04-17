@@ -8,7 +8,21 @@ import java.sql.SQLException;
 
 public class DBManager {
 	
-	private String url = "jdbc:mysql://localhost:3306/jsp";
+	public static void main(String[] args) {
+		DBManager db = DBManager.getInstance();
+		try {
+			db.open();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private String url = "jdbc:mysql://localhost:3306/jsp?useSSL=false";
+//	private String url = "jdbc:mysql://127.0.0.1:3306/jsp?useSSL=false";
 	private String id = "root";
 	private String pw = "mysql";
 	private Connection con = null;
